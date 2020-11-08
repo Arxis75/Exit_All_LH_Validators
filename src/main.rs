@@ -29,7 +29,8 @@ fn main() {
 
                 let key = str::from_utf8(&output.stdout).unwrap();
 
-                for k in key.lines().filter(|k| k[0..22].eq(&"keystore-m_12381_3600_".to_string()) 
+                for k in key.lines().filter(|k| (k.len() > 22)
+                                            && k[0..22].eq(&"keystore-m_12381_3600_".to_string()) 
                                             && k.ends_with(".json")) {
 
                     let file_path = String::from(validators_path.to_owned()+f+"/"+k);
